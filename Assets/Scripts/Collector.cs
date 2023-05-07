@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using RemoteNotification = UnityEngine.iOS.RemoteNotification;
 
@@ -49,6 +50,12 @@ public class Collector : MonoBehaviour
             yield return null;
         }
     }
-    
+
+    private void OnDrawGizmos()
+    {
+        Handles.color = Color.red;
+        Handles.DrawWireDisc(transform.position, Vector3.up, _distanceToCollect);
+        
+    }
     
 }
