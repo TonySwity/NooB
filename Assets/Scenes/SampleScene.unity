@@ -883,6 +883,21 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  OnLevelUp:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 908064000}
+        m_TargetAssemblyTypeName: Collector, Assembly-CSharp
+        m_MethodName: LevelUpEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &579289620 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7930098749374907673, guid: 720961085c3d44b1398649b02155e2d5,
@@ -1383,6 +1398,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   _experienceManager: {fileID: 509982298}
+  _levelUpEffectPref: {fileID: 1188192175323852558, guid: 0f04ca49ae490b743971cf31729b3364,
+    type: 3}
 --- !u!1 &966626453
 GameObject:
   m_ObjectHideFlags: 0

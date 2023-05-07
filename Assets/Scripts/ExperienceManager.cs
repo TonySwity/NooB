@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -15,8 +16,9 @@ public class ExperienceManager : MonoBehaviour
     [SerializeField] private EffectsManager _effectsManager;
     [SerializeField] private AnimationCurve _experienceCurve;
 
-    private int _level;
+    public UnityEvent OnLevelUp;
 
+    private int _level;
     private void Awake()
     {
         _nextLevelExperience = _experienceCurve.Evaluate(0);
@@ -36,8 +38,10 @@ public class ExperienceManager : MonoBehaviour
 
     public void UpLevel()
     {
+        
         _level++;
-        _effectsManager.ShowCards();
+        OnLevelUp.Invoke();
+        StartCoroutine(WaitTimeShowCards());
         _levelText.text = _level.ToString();
         _experience = 0;
         _nextLevelExperience = _experienceCurve.Evaluate(_level);
@@ -46,5 +50,11 @@ public class ExperienceManager : MonoBehaviour
     private void DisplayExperience()
     {
         _experienceScale.fillAmount = _experience / _nextLevelExperience;
+    }
+
+    private IEnumerator WaitTimeShowCards()
+    {
+        yield return new WaitForSecondsRealtime(2.5f);
+        _effectsManager.ShowCards();
     }
 }
