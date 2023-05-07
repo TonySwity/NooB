@@ -24,6 +24,11 @@ public class ExperienceManager : MonoBehaviour
         _nextLevelExperience = _experienceCurve.Evaluate(0);
     }
 
+    private void Start()
+    {
+        UpdateLevelText();
+    }
+
     public void AddExperience(int value)
     {
         _experience += value;
@@ -42,7 +47,7 @@ public class ExperienceManager : MonoBehaviour
         _level++;
         OnLevelUp.Invoke();
         StartCoroutine(WaitTimeShowCards());
-        _levelText.text = _level.ToString();
+        UpdateLevelText();
         _experience = 0;
         _nextLevelExperience = _experienceCurve.Evaluate(_level);
     }
@@ -56,5 +61,10 @@ public class ExperienceManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(2.5f);
         _effectsManager.ShowCards();
+    }
+
+    private void UpdateLevelText()
+    {
+        _levelText.text = _level.ToString();
     }
 }
