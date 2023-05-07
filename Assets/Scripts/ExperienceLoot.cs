@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExperienceLoot : MonoBehaviour
+public class ExperienceLoot : Loot
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private int _experienceValue = 1;
+    public override void Take(Collector collector)
     {
-        
+        base.Take(collector);
+        collector.TakeExperience(_experienceValue);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

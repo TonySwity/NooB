@@ -1,18 +1,29 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Collector : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private float _distanceToCollect = 2f;
+    [SerializeField] private LayerMask _layerMask;
+    [SerializeField] private ExperienceManager _experienceManager;
+
+    private void FixedUpdate()
     {
-        
+        Collider[] colliders = Physics.OverlapSphere(transform.position, _distanceToCollect, _layerMask, QueryTriggerInteraction.Ignore);
+
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (colliders[i].GetComponent<Loot>() is Loot loot)
+            {
+                loot.Collect(this);
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void TakeExperience(int value)
     {
-        
+        _experienceManager.AddExperience(value);
     }
 }
