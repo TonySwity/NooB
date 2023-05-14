@@ -173,5 +173,4 @@ public class Joystick : MonoBehaviour
         _backgroundTransform.gameObject.SetActive(false);
         _stickTransform.gameObject.SetActive(false);
     }
-
 }

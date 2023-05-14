@@ -9,6 +9,17 @@ public abstract class Effect : ScriptableObject
     public Sprite Sprite;
     public int Level = -1;
 
+    protected EffectsManager EffectsManager;
+    protected Player Player;
+    protected EnemyManager EnemyManager;
+
+    public virtual void Initialize(EffectsManager effectsManager, EnemyManager enemyManager, Player player)
+    {
+        this.EffectsManager = effectsManager;
+        this.EnemyManager = enemyManager;
+        this.Player = player;
+    }
+    
     public virtual void Activate()
     {
         Level++;

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d50aae8a3ec46619d952817c1279c7, type: 3}
+  m_Name: ShadowMissilesEffect
+  m_EditorClassIdentifier: 
+  Name: Shadow Missle
+  Description: Shadow Missle effect
+  Sprite: {fileID: 21300000, guid: 17a9ceaa392ef4901bc20bf68c8f4ddf, type: 3}
+  Level: -1
+  _collDown: 1
+  _shadowMissilePref: {fileID: 129550761212827090, guid: d8b50a6cf47fd47069ce704d30f100df,
+    type: 3}
+  _bulletSpeed: 7
+  _damageBullet: 20
+  _passCountBullet: 2

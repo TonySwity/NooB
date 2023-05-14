@@ -18,7 +18,7 @@ public class ExperienceManager : MonoBehaviour
 
     public UnityEvent OnLevelUp;
 
-    private int _level;
+    private int _level = -1;
     private void Awake()
     {
         _nextLevelExperience = _experienceCurve.Evaluate(0);
