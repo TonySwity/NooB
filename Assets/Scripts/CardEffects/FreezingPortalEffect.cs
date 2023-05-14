@@ -21,6 +21,7 @@ public class FreezingPortalEffect : ContinuousEffect
     {
         FreezingPortal newFreezingPortal = Instantiate(_freezingPortalPref, Player.transform.position, Quaternion.identity);
         newFreezingPortal.Init(_damageFreezingPortal, _enemySpeed, _effectTime,_timeReloadEffect);
+        Destroy(newFreezingPortal.gameObject, _effectTime);
         yield return null;
                 
     }

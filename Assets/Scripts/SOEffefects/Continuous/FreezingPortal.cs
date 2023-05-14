@@ -2,11 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using NotImplementedException = System.NotImplementedException;
 
 public class FreezingPortal : MonoBehaviour
 {
-    private float _damage;
+    [SerializeField]private float _damage;
     private float _timeReloadEffect;
     private float _effectTime;
     private float _enemySpeed;
@@ -24,10 +23,9 @@ public class FreezingPortal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out Enemy enemy))
+        if (other.GetComponent<Enemy>() is Enemy enemy)
         {
             _enemy = enemy;
-            Debug.Log("EnemyDamage");
             _enemyDamageCoroutine = StartCoroutine(EnemyDamage());
         }
     }
@@ -36,9 +34,8 @@ public class FreezingPortal : MonoBehaviour
     {
         if (other.GetComponent<Enemy>())
         {
-            StopCoroutine(_enemyDamageCoroutine);
-            Destroy(this, 3f);
             _enemy = null;
+            StopCoroutine(_enemyDamageCoroutine);
         }
     }
 
