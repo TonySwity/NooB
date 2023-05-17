@@ -19,7 +19,7 @@ MonoBehaviour:
   _collDown: 10
   _freezingPortalPref: {fileID: 8170612513438153499, guid: 841b8fe6e209742388b58db317b3a19f,
     type: 3}
-  _damageFreezingPortal: 1
+  _damageFreezingPortal: 25
   _timeReloadEffect: 15
   _effectTime: 10
   _enemySpeed: 2

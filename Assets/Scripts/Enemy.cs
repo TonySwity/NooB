@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject _dieEffect;
 
     private EnemyManager _enemyManager;
+    private float _tempSpeed;
 
     private void Awake()
     {
@@ -68,8 +69,6 @@ public class Enemy : MonoBehaviour
     {
         if (other.TryGetComponent(out PlayerHealth playerHealth))
         {
-            Debug.Log("PLAYER");
-            
             _playerHealth = playerHealth;
         }
     }
@@ -88,6 +87,24 @@ public class Enemy : MonoBehaviour
         {
             Die();
         }
+    }
+
+    public void SetSpeed(float speed, float timeOfAction)
+    {
+        _tempSpeed = _speed;
+        _speed = speed;
+
+        StartCoroutine(SetSpeedTimer(timeOfAction));
+    }
+
+    private IEnumerator SetSpeedTimer(float timeAction)
+    {
+        for (float t = 0; t < timeAction; t += Time.deltaTime)
+        {
+            yield return null;
+        }
+
+        _speed = _tempSpeed;
     }
 
     private void Die()
